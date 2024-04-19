@@ -1,1 +1,72 @@
-/* You can add global styles to this file, and also import other style files */
+$header-dark: rgb(33,37,41);
+$header-light: rgb(248,249,250);
+$body-dark: #121212;
+$body-light: #ffffff;
+$color-dark: #000000;
+$color-light: #e0e0e0;
+
+@keyframes to-dark-mode {
+	from {
+		background-color: $body-light;
+		color: $color-dark;
+	}
+	to {
+		background-color: $body-dark;
+		color: $color-light;
+	}
+}
+
+@keyframes to-light-mode {
+	to {
+		background-color: $body-light;
+		color: $color-dark;
+	}
+	from {
+		background-color: $body-dark;
+		color: $color-light;
+	}
+}
+
+@keyframes header-light {
+	to {
+		background-color: $header-light;
+		color: $color-dark;
+	}
+	from {
+		background-color: $header-dark;
+		color: $color-light
+	}
+}
+
+@keyframes header-dark {
+	from {
+		background-color: $header-light;
+		color: $color-dark;
+	}
+	to {
+		background-color: $header-dark;
+		color: $color-light
+	}
+}
+
+body.dark {
+	animation-name: to-dark-mode;
+	animation-duration: 500ms;
+	background-color: #121212;
+	color: #e0e0e0;
+}
+
+body.light {
+	animation-name: to-light-mode;
+	animation-duration: 500ms;
+}
+
+nav.bg-light {
+	animation-name: header-light;
+	animation-duration: 500ms;
+}
+
+nav.bg-dark {
+	animation-name: header-dark;
+	animation-duration: 500ms;
+}

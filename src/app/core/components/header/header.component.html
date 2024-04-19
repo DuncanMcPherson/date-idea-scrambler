@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-lg px-3" *ngIf="vm$ | async as vm" [ngClass]="{'navbar-dark bg-dark': vm.darkTheme, 'bg-light': !vm.darkTheme}">
+	<a routerLink="/" class="navbar-brand">Date Generator</a>
+	<button class="navbar-toggler" (click)="toggleMenu()"><span class="navbar-toggler-icon"></span></button>
+	<div class="navbar-collapse justify-content-between position-relative" *ngIf="vm.menuOpen || vm.menuAlwaysOpen">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a routerLink="account" routerLinkActive="active" class="nav-link">Account</a>
+			</li>
+		</ul>
+		<div class="position-absolute pt-1">
+			<img ngSrc="../../../../assets/moon_icon.svg" alt="theme toggle" width="24" height="24"
+				 *ngIf="!vm.darkTheme; else darkTheme" (click)="toggleTheme()">
+			<ng-template #darkTheme>
+				<img ngSrc="../../../../assets/sun_icon.svg" alt="theme toggle" width="24" height="24" (click)="toggleTheme()">
+			</ng-template>
+		</div>
+	</div>
+</nav>
