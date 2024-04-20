@@ -19,14 +19,17 @@ jobs:
                 uses: actions/upload-artifact@v4
                 with:
                     name: ci-build
-                    path: dist
+                    path: |
+                        dist
+                        database.rules.json
+                        firebase.json
     deploy:
         needs: build
         if: never()
         runs-on: ubuntu-latest
         steps:
-            -   name: Checkout
-                uses: actions/checkout@v4
+#            -   name: Checkout
+#                uses: actions/checkout@v4
             -   name: Download artifacts
                 uses: actions/download-artifact@v4
                 with:
