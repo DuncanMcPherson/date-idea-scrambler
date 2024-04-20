@@ -25,7 +25,6 @@ jobs:
                         firebase.json
     deploy:
         needs: build
-        if: never()
         runs-on: ubuntu-latest
         steps:
 #            -   name: Checkout
