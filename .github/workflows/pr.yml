@@ -33,6 +33,12 @@ jobs:
                 uses: actions/download-artifact@v4
                 with:
                     name: ci-build
+            -   name: Deploy Preview
+                uses: FirebaseExtended/action-hosting-deploy@v0
+                with:
+                    repoToken: ${{ secrets.GITHUB_TOKEN }}
+                    firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DATE_IDEA_SCRAMBLER }}
+                    projectId: date-idea-scrambler
     test:
         if: always()
         needs: build

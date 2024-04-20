@@ -3,7 +3,7 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "public": "dist/date-idea-scrambler",
+    "public": "dist/date-idea-scrambler/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
