@@ -46,8 +46,8 @@ jobs:
                 with:
                     firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DATE_IDEA_SCRAMBLER }}
                     projectId: date-idea-scrambler
-    test:
-        runs-on: ubuntu-latest
-    coverage-results:
-        runs-on: ubuntu-latest
-        needs: test
+#    test:
+#        runs-on: ubuntu-latest
+#    coverage-results:
+#        runs-on: ubuntu-latest
+#        needs: test
