@@ -42,7 +42,7 @@ jobs:
                     channelId: live
                     projectId: date-idea-scrambler
             -   name: Deploy database rules
-                uses: DuncanMcPherson/action-database-deploy
+                uses: DuncanMcPherson/action-database-deploy@master
                 with:
                     firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DATE_IDEA_SCRAMBLER }}
                     projectId: date-idea-scrambler
