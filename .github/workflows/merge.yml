@@ -45,7 +45,7 @@ jobs:
             -   name: Deploy database rules
                 uses: DuncanMcPherson/action-database-deploy@master
                 with:
-                    repoToken: ${{ secrets.GITHUB_TOKEN }}
+                    repoToken: ${{ secrets.FIREBASE_CI_TOKEN }}
                     firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DATE_IDEA_SCRAMBLER }}
                     projectId: date-idea-scrambler
 #    test:
