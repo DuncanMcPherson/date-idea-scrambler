@@ -1,9 +1,11 @@
 import {Observable, skip, take, tap} from "rxjs";
 
+/* istanbul ignore next */
 export function readObservableSynchronously<T>(observable$: Observable<T>, skips: number = 0): T {
 	return readObservableSynchronouslyAfterAction(observable$, () => {}, skips);
 }
 
+/* istanbul ignore next */
 export function readObservableSynchronouslyAfterAction<T>(
 	observable$: Observable<T>,
 	action: () => void,
@@ -43,6 +45,7 @@ export function readObservableSynchronouslyAfterAction<T>(
 	return actualResult!;
 }
 
+/* istanbul ignore next */
 export function readObservableErrorSynchronously(
 	observable$: Observable<any>,
 	skips: number = 0,
@@ -79,6 +82,7 @@ export function readObservableErrorSynchronously(
 	return actualError;
 }
 
+/* istanbul ignore next */
 export function readObservableCompletionSynchronously(
 	observable$: Observable<any>,
 	skips: number = 0,

@@ -8,6 +8,7 @@ import { ObservablePropertyNames } from "./observable-property-names.type";
 type ObservableType<T> = T extends Observable<infer U> ? U : T;
 type ObservableFunction<T> = (...args: any[]) => Observable<T>;
 
+/* istanbul ignore next */
 export class AutoMockerPlus extends AutoMocker {
 	public withReturnObservable<T>(
 		spy: ObservableFunction<T>,

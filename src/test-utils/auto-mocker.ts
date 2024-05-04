@@ -25,6 +25,7 @@ const mockClassOptionsDefaults: IMockClassOptions<any> = {
 	ignoredProperties: []
 }
 
+/* istanbul ignore next*/
 export class AutoMocker {
 	constructor(private readonly maxDepth: number = 1) {
 	}
@@ -272,8 +273,10 @@ export class AutoMocker {
 
 	private addMockDefinedProperty<T>(mock: T, propertyData: IDefinedPropertyData<T>): void {
 		const attributes = {
-			get: propertyData.hasGet ? () => {} : undefined,
-			set: propertyData.hasSet ? () => {} : undefined,
+			get: propertyData.hasGet ? () => {
+			} : undefined,
+			set: propertyData.hasSet ? () => {
+			} : undefined,
 			configurable: true
 		}
 
@@ -370,7 +373,7 @@ export class AutoMocker {
 		}
 		if (this.isObject(value)) {
 			return depth < maxDepth
-			// @ts-ignore
+				// @ts-ignore
 				? this.mockObject(`${objectName}.${String(key)}`, value, depth++, maxDepth)
 				: value;
 		}

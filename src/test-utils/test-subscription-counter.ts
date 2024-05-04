@@ -1,5 +1,6 @@
 import {finalize, Observable} from "rxjs";
 
+/* istanbul ignore next */
 export class TestSubscriptionCounter<T> {
 	private _lifetimeSubscriptionCount: number = 0;
 	private _activeSubscriptionCount: number = 0;
