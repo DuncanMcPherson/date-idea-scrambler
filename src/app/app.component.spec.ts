@@ -21,4 +21,9 @@ describe('AppComponent', () => {
 		const app = fixture.componentInstance;
 		expect(app).toBeTruthy();
 	});
+
+	it('should initialize chance', () => {
+		expect(chance).toBeTruthy();
+		expect(chance.age()).toBeGreaterThan(0);
+	})
 });

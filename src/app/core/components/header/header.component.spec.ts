@@ -1,23 +1,27 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {HeaderComponent} from "./header.component";
+import {readObservableSynchronously} from "../../../../test-utils/read-observable-synchronously";
 
-import { HeaderComponent } from './header.component';
+describe('Header Component', () => {
+	let headerComponent: HeaderComponent;
 
-describe('HeaderComponent', () => {
-  let component: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
+	beforeEach(() => {
+		headerComponent = new HeaderComponent();
+	})
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [HeaderComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(HeaderComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	it("should create the component", () => {
+		expect(headerComponent).toBeTruthy();
+	});
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+	describe("ngOnInit", () => {
+		it("should initialize the vm$", () => {
+			headerComponent.ngOnInit();
+            expect(headerComponent.vm$).toBeDefined();
+			const vmValue = readObservableSynchronously(headerComponent.vm$);
+			expect(vmValue).toEqual({
+				darkTheme: true,
+				menuOpen: false,
+				menuAlwaysOpen: false
+			});
+		});
+	})
+})
