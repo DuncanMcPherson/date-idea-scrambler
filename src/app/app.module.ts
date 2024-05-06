@@ -4,6 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {CoreModule} from "./core/core.module";
+import {AppService} from "./core/services/app/app.service";
 
 @NgModule({
 	declarations: [
@@ -18,4 +19,9 @@ import {CoreModule} from "./core/core.module";
 	bootstrap: [AppComponent]
 })
 export class AppModule {
+	constructor(
+		appService: AppService
+	) {
+		appService.initialize();
+	}
 }

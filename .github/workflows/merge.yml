@@ -48,8 +48,35 @@ jobs:
                     repoToken: ${{ secrets.FIREBASE_CI_TOKEN }}
                     firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DATE_IDEA_SCRAMBLER }}
                     projectId: date-idea-scrambler
-#    test:
-#        runs-on: ubuntu-latest
-#    coverage-results:
-#        runs-on: ubuntu-latest
-#        needs: test
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v4
+            -   name: Cache Node Modules
+                uses: actions/cache@v3
+                with:
+                    path: ./node_modules
+                    key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+            -   name: NPM Install
+                run: npm ci
+            -   name: Run Tests
+                run: npm run test:ci
+            -   name: Upload results
+                uses: actions/upload-artifact@v4
+                with:
+                    name: coverage-results
+                    path: |
+                        test-results
+    coverage-results:
+        runs-on: ubuntu-latest
+        needs: test
+        steps:
+            -   name: Download artifact
+                uses: actions/download-artifact@v4
+                with:
+                    name: coverage-results
+            -   name: Upload to CodeCov
+                uses: codecov/codecov-action@v4
+                env:
+                    CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

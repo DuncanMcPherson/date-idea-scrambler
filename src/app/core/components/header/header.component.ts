@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
 	private menuOpen$$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 	public vm$: Observable<IHeaderVm>;
 
+	// TODO: Accounts and authentication state
 	constructor(
 	) {
 	}
