@@ -47,6 +47,7 @@ describe('Header Component', () => {
 	describe("toggleTheme", () => {
 		beforeEach(() => {
 			headerComponent.ngOnInit();
+			headerComponent["prefersDarkTheme$$"].next(true);
 		});
 
 		it("should toggle the theme", (done) => {
@@ -69,6 +70,7 @@ describe('Header Component', () => {
 	describe("onResize", () => {
 		beforeEach(() => {
 			headerComponent.ngOnInit();
+			headerComponent["menuAlwaysOpen$$"].next(false);
 		});
 
 		it("should adjust always open", () => {
