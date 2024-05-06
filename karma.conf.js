@@ -9,8 +9,8 @@ module.exports = function (config) {
 			require('karma-jasmine'),
 			require('karma-chrome-launcher'),
 			require('karma-jasmine-html-reporter'),
-			require('karma-coverage'),
 			require('@angular-devkit/build-angular/plugins/karma'),
+			require('karma-coverage'),
 			require('karma-junit-reporter')
 		],
 		client: {
@@ -28,15 +28,24 @@ module.exports = function (config) {
 		junitReporter: {
 			outputDir: './test-results',
 		},
+		// preprocessors: {
+		// 	'src/**/*.[js|ts]': ['coverage']
+		// },
 		coverageReporter: {
-			dir: require('path').join(__dirname, './test-results/coverage'),
+			dir: "test-results/coverage",
 			subdir: '.',
-			reporters: [
-				{type: 'html'},
-				{type: 'text-summary'},
-				{type: 'lcov'}
-			],
+			type: 'lcov',
+			fixWebpackSourcePaths: true,
 		},
+		// coverageReporter: {
+		// 	dir: require('path').join(__dirname, './test-results/coverage'),
+		// 	subdir: '.',
+		// 	reporters: [
+		// 		{type: 'html'},
+		// 		{type: 'text-summary'},
+		// 		{type: 'lcov'}
+		// 	],
+		// },
 		reporters: ['progress', 'kjhtml'],
 		browsers: ['Chrome'],
 		restartOnFileChange: true
