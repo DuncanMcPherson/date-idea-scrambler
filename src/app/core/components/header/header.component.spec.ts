@@ -16,11 +16,11 @@ describe('Header Component', () => {
 	describe("ngOnInit", () => {
 		it("should initialize the vm$", () => {
 			headerComponent.ngOnInit();
-			headerComponent["prefersDarkTheme$$"].next(true);
+			headerComponent["prefersDarkTheme$$"].next(false);
             expect(headerComponent.vm$).toBeDefined();
 			const vmValue = readObservableSynchronously(headerComponent.vm$);
 			expect(vmValue).toEqual({
-				darkTheme: true,
+				darkTheme: false,
 				menuOpen: false,
 				menuAlwaysOpen: false
 			});
