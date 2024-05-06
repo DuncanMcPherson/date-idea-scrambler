@@ -10,7 +10,8 @@ module.exports = function (config) {
 			require('karma-chrome-launcher'),
 			require('karma-jasmine-html-reporter'),
 			require('karma-coverage'),
-			require('@angular-devkit/build-angular/plugins/karma')
+			require('@angular-devkit/build-angular/plugins/karma'),
+			require('karma-junit-reporter')
 		],
 		client: {
 			jasmine: {
@@ -23,6 +24,9 @@ module.exports = function (config) {
 		},
 		jasmineHtmlReporter: {
 			suppressAll: true // removes the duplicated traces
+		},
+		junitReporter: {
+			outputDir: './test-results',
 		},
 		coverageReporter: {
 			dir: require('path').join(__dirname, './test-results/coverage'),
