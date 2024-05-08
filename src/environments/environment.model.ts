@@ -1,6 +1,7 @@
 export interface IEnvironment {
 	readonly recaptchaKey: string;
 	readonly firebaseConfig: IFirebaseConfig;
+	readonly production: boolean;
 }
 
 interface IFirebaseConfig {

@@ -5,6 +5,9 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {CoreModule} from "./core/core.module";
 import {AppService} from "./core/services/app/app.service";
+import {NgxsModule} from "@ngxs/store";
+import {environment} from "../environments/environment";
+import {UserState} from "./core/states/user.state";
 
 @NgModule({
 	declarations: [
@@ -13,7 +16,10 @@ import {AppService} from "./core/services/app/app.service";
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
-		CoreModule
+		CoreModule,
+		NgxsModule.forRoot([UserState], {
+			developmentMode: !environment.production
+		})
 	],
 	providers: [],
 	bootstrap: [AppComponent]
